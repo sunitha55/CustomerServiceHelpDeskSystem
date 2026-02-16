@@ -1,0 +1,41 @@
+package BussinessLogic;
+
+import java.util.Deque;
+import java.util.LinkedList;
+
+public class HelpDeskClass {
+	private Deque<TicketClass> tq =new LinkedList<>();
+	private static int ticketId=1;
+	public void addNormalTicket(String name,String issue) {
+		TicketClass tc=new TicketClass(ticketId,name,issue);
+		ticketId++;
+		tq.addLast(tc);
+		System.out.println(tq);
+	}
+	public void addEmergencyTicket(String name,String issue) {
+		TicketClass tc=new TicketClass(ticketId,name,issue);
+		ticketId++;
+		tq.addFirst(tc);
+		System.out.println(tq);
+	}
+	public void serveNextCustomer() {
+		if(tq.isEmpty()) {
+			System.out.println("Deque is empty..");
+		}
+		else {
+			TicketClass t=tq.removeFirst();
+			System.out.println("Elements removed is:" +t);
+		}
+	}
+	public void pendingTickets() {
+		if(tq.isEmpty())
+			System.out.println("No pending tickets");
+		else {
+			System.out.println("Pending tickets are: ");
+			for(TicketClass t:tq) {
+				System.out.println(t);
+			}
+		}
+	}
+
+}
