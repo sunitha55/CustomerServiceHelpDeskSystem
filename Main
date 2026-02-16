@@ -1,0 +1,51 @@
+package MainClass;
+
+import java.util.Scanner;
+
+import BussinessLogic.HelpDeskClass;
+
+public class Main {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		HelpDeskClass hd=new HelpDeskClass();
+		System.out.println("*********Welcome to Customer Service Help Desk System*********");
+		while(true) {
+			System.out.println("Select which option you are looking for");
+			System.out.println("1.Add Normal Ticket");
+			System.out.println("2.Add Emergency Ticket");
+			System.out.println("3.Serve Next Customer");
+			System.out.println("4.Show all Pending Tasks");
+			System.out.println("5.Exit");
+			int option=sc.nextInt();
+			switch(option) {
+			case 1:{
+				System.out.println("Enter Customer Name: ");
+				String customerName=sc.next();
+				System.out.println("Give us Issue Description");
+				String issueDescription=sc.next();
+				hd.addNormalTicket(customerName,issueDescription);
+			}break;
+			case 2:{
+				System.out.println("Enter Customer Name: ");
+				String customerName=sc.next();
+				System.out.println("Give us Issue Description");
+				String issueDescription=sc.next();
+				hd.addEmergencyTicket(customerName,issueDescription);
+			}break;
+			case 3:{
+				hd.serveNextCustomer();
+			}
+			break;
+			case 4:{
+				hd.pendingTickets();
+			}break;
+			case 5:{
+				System.exit(0);
+				
+			}
+			}
+		}
+		
+	}
+
+}
